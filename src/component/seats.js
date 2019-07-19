@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './seats.css';
 
 class Seats extends Component {
-
     constructor() {
         super();
 
@@ -57,18 +56,58 @@ class Seats extends Component {
         }
 
         const checkAreaChecked = (nowN) => {
-            console.log(nowN, areaSelected, randomN);
             // 앞자리 체크됐을 경우
             if ( areaSelected.includes('front-seat')) {
-                for ( let i=0; i<randomN.length; i++ ) {
-                    if ( randomN[i] >= 0 && randomN[i] <= 11) {
-                        
-                    } else if ( randomN[i] > 35 && randomN[i] < 47 ) {
-
+                let temp = 0;
+                let tempIndex = 0;
+                for ( let i=nowN; i<randomN.length; i++ ) {
+                    if ( randomN[i] >= 0 && randomN[i] <= 12) {
+                        if (temp) {
+                            randomN[tempIndex] = randomN[i];
+                            randomN[i] = temp;
+                        }
+                        break;
+                    } else if ( randomN[i] > 36 && randomN[i] < 47 ) {
+                        if (temp) {
+                            randomN[tempIndex] = randomN[i];
+                            randomN[i] = temp;
+                        }
+                        break;
+                    } else {
+                        if ( !temp ) {
+                            temp = randomN[i];
+                            tempIndex = i;
+                        }
+                        continue;
                     }
-
                 }
             }
+            if ( areaSelected.includes('no-front-seat')) {
+                let temp = 0;
+                let tempIndex = 0;
+                for ( let i=nowN; i<randomN.length; i++ ) {
+                    if ( randomN[i] >= 0 && randomN[i] <= 12) {
+                        if ( !temp ) {
+                            temp = randomN[i];
+                            tempIndex = i;
+                        }
+                        continue;
+                    } else if ( randomN[i] > 36 && randomN[i] < 47 ) {
+                        if ( !temp ) {
+                            temp = randomN[i];
+                            tempIndex = i;
+                        }
+                        continue;
+                    } else {
+                        if (temp) {
+                            randomN[tempIndex] = randomN[i];
+                            randomN[i] = temp;
+                        }
+                        break;
+                    }
+                }
+            }
+            // console.log(nowN, areaSelected, randomN);
         }
 
         const shuffle = (array) => {
@@ -199,9 +238,12 @@ class Seats extends Component {
             <div className="seats-wrap">
                 <p className="show-total">총 인원은 {this.props.howMany}명 입니다.</p>
                 <form className="seats-area" id="jsSeatsArea">
-                    <input type="checkbox" name="jsAreaCheck" value="front-seat" />앞자리
-                    <input type="checkbox" name="jsAreaCheck" value="middle-seat" />중간
-                    <input type="checkbox" name="jsAreaCheck" value="back-seat" />뒷자리
+                    <input type="radio" name="jsAreaCheck" value="all-seat" id="radioAll" />
+                    <label for="radioAll">전체</label>
+                    <input type="radio" name="jsAreaCheck" value="front-seat" id="radioFront" />
+                    <label for="radioFront">앞자리</label>
+                    <input type="radio" name="jsAreaCheck" value="no-front-seat" id="radioNoFront" />
+                    <label for="radioNoFront">앞자리제외</label>
                 </form>
                 <div className="seats">
                     <ul className="items left">

@@ -4,6 +4,26 @@
     margin-bottom: 20px;
 }
 
+.seats-wrap .seats-area {
+    margin-bottom: 20px;
+}
+
+.seats-wrap .seats-area label {
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    margin-right: 10px;
+    color: #999;
+}
+
+.seats-wrap .seats-area input[type="radio"] {
+    display: none;
+}
+
+.seats-wrap .seats-area input[type="radio"]:checked + label {
+    color: #1f72d1;
+    border-color: #1f72d1;
+}
+
 .seats-wrap .seats {
     display: flex;
     margin: 0 -10px;
@@ -58,3 +78,13 @@
 }
 
 
+@media screen and ( max-width: 767px ) {
+    .seats-wrap .show-total {
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+
+    .seats-wrap .show-my-seat {
+        bottom: 25%;
+    }
+}
