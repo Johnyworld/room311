@@ -1,0 +1,60 @@
+.seats-wrap .show-total {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.seats-wrap .seats {
+    display: flex;
+    margin: 0 -10px;
+    flex-direction: row;
+}
+
+.seats-wrap .seats .items {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 5px;
+    width: 50%;
+    height: 100%;
+    padding: 0 10px;
+}
+
+.seats-wrap .seats .items.left,
+.seats-wrap .seats .items.right {
+    grid-template-columns: repeat(3, 1fr);
+    width: 25%;
+}
+
+.seats-wrap .seats .items .item {
+    padding-top: 100%;
+    background-color: #eee;
+}
+
+.seats-wrap .seats .items .item.seated {
+    background-color: #b2b8be;
+}
+
+.seats-wrap .seats .items .item.active {
+    background-color: #1f72d1;
+}
+
+.seats-wrap .show-my-seat {
+    position: absolute;
+    bottom: 27%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+.seats-wrap .show-my-seat span {
+    color: #1f72d1;
+}
+
+.seats-wrap .show-my-seat #jsSeatSide {
+    font-size: 30px;
+    color: #aaa;
+    vertical-align: middle;
+}
+
+

@@ -1,0 +1,15 @@
+header {
+    background-color: #ffffff;
+    padding: 40px;
+}
+
+header .header-title {
+    display: inline-block;
+    padding: 0 0 .15em;
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 1;
+    border-bottom: 2px solid #1f72d1;
+    font-family: 'Roboto Slab', serif;
+}
+
