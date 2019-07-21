@@ -67,7 +67,7 @@ class Seats extends Component {
                             randomN[i] = temp;
                         }
                         break;
-                    } else if ( randomN[i] > 36 && randomN[i] < 47 ) {
+                    } else if ( randomN[i] > 36 && randomN[i] <= 48 ) {
                         if (temp) {
                             randomN[tempIndex] = randomN[i];
                             randomN[i] = temp;
