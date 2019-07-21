@@ -61,8 +61,8 @@ input[type=submit] {-webkit-appearance:none;}
   font-weight: 600;
   color: white;
   border: none;
-  border-radius: 20px 20px 0 0 !important;
-  background-color: #1f72d1 !important;
+  border-radius: 20px 20px 0 0;
+  background-color: #1f72d1;
   transition: .5s;
   cursor: pointer;
   outline: none;
