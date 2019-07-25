@@ -5,7 +5,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "30"
+            value: "47"
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
