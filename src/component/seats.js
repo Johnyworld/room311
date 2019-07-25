@@ -107,7 +107,6 @@ class Seats extends Component {
                     }
                 }
             }
-            // console.log(nowN, areaSelected, randomN);
         }
 
         const shuffle = (array) => {
@@ -122,7 +121,6 @@ class Seats extends Component {
                 array[currentIndex] = array[randomIndex];
                 array[randomIndex] = temporaryValue;
             }
-            console.log(array);
             return array;
         }
 
@@ -169,7 +167,6 @@ class Seats extends Component {
         // 버튼 클릭시
         const whereIsMySeat = () => {
             if ( canClick ) {
-                // console.log(jsSeatsArea.getElementsByTagName('radio')[0].selected);
                 canClick = false;
                 jsMySeat.classList.add('is-delay');
                 if ( nowN < this.props.howMany ) {

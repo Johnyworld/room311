@@ -16,7 +16,6 @@ class Home extends Component {
     }
 
     handleSubmit(event) {
-        console.log(this);
         this.props.history.push({
             pathname: '/main',
             state: { value: this.state.value }
