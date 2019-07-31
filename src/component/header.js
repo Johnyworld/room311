@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return(
             <header>
-                <div className="header-title">ROOM 311</div>
+                <button onClick={()=>{this.props.clickHeader()}} type="type" className="header-title">ROOM 311</button>
                 <div></div>
             </header>
         );

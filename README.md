@@ -11,5 +11,5 @@
 리액트앱으로 제작했습니다. 리액트에 적응 하고 공부하기 위한 목적으로 리액트로 제작했습니다. 물론 아직 완벽히 알지 못합니다.
 
 ### 링크
-+ App Link : [View](http://room311.s3-website.ap-northeast-2.amazonaws.com/)
++ App Link : [View](https://johnyworld.github.io/room311/)
 + This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

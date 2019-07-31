@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './seats.css';
 
 class Seats extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.randomN = [];
         this.itemsCenter = [];
@@ -11,7 +11,7 @@ class Seats extends Component {
         this.itemsRight = [];
 
         this.init = () => {
-            for( let i=0; i<this.props.howMany; i++ ) {
+            for( let i=0; i<this.props.totalSeats; i++ ) {
                 this.randomN.push( i+1 );
                 if( i <= 35 ) {
                     this.itemsCenter.push(
@@ -25,6 +25,7 @@ class Seats extends Component {
                 }
             }
         }
+        this.init();
     }
 
     componentDidMount() {
@@ -169,7 +170,7 @@ class Seats extends Component {
             if ( canClick ) {
                 canClick = false;
                 jsMySeat.classList.add('is-delay');
-                if ( nowN < this.props.howMany ) {
+                if ( nowN < this.props.totalSeats ) {
 
                     // 지정 자리범위 체크
                     areaCheck();
@@ -230,40 +231,61 @@ class Seats extends Component {
     }
 
     render() {
-        this.init();
         return (
             <div className="seats-wrap">
-                <p className="show-total">총 인원은 {this.props.howMany}명 입니다.</p>
-                <form className="seats-area" id="jsSeatsArea">
-                    <input type="radio" name="jsAreaCheck" value="all-seat" id="radioAll" />
-                    <label for="radioAll">전체</label>
-                    <input type="radio" name="jsAreaCheck" value="front-seat" id="radioFront" />
-                    <label for="radioFront">앞자리</label>
-                    <input type="radio" name="jsAreaCheck" value="no-front-seat" id="radioNoFront" />
-                    <label for="radioNoFront">앞자리제외</label>
-                </form>
-                <div className="seats">
-                    <ul className="items left">
-                        {this.itemsLeft}
-                    </ul>
-                    <ul className="items center">
-                        {this.itemsCenter}
-                    </ul>
-                    <ul className="items right">
-                        {this.itemsRight}
-                    </ul>
-                </div>
-                <p className="show-my-seat">
-                    <span id="jsSeatSide"></span>
-                    <span id="jsSeatRow">0</span>열&nbsp;
-                    <span id="jsSeatCol">0</span>번째
-                </p>
+                <ShowTotal totalSeats={this.props.totalSeats} />
+                <SeatsAreaBtns />
+                <SeatsGUI itemsLeft={this.itemsLeft} itemsCenter={this.itemsCenter} itemsRight={this.itemsRight} />
+                <ShowMySeat />
                 <div className="button-wrap">
                     <button className="btn" id="jsMySeat">내 자리는?</button>
                 </div>
             </div>
         )
     }
+}
+
+function ShowTotal({totalSeats}) {
+    return ( <p className="show-total">총 인원은 {totalSeats}명 입니다.</p> );
+}
+
+function SeatsAreaBtns() {
+    return (
+        <form className="seats-area" id="jsSeatsArea">
+            <input type="radio" name="jsAreaCheck" value="all-seat" id="radioAll" />
+            <label htmlFor="radioAll">전체</label>
+            <input type="radio" name="jsAreaCheck" value="front-seat" id="radioFront" />
+            <label htmlFor="radioFront">앞자리</label>
+            <input type="radio" name="jsAreaCheck" value="no-front-seat" id="radioNoFront" />
+            <label htmlFor="radioNoFront">앞자리제외</label>
+        </form>
+    )
+}
+
+function SeatsGUI({ itemsLeft, itemsCenter, itemsRight }) {
+    return (
+        <div className="seats">
+            <ul className="items left">
+                {itemsLeft}
+            </ul>
+            <ul className="items center">
+                {itemsCenter}
+            </ul>
+            <ul className="items right">
+                {itemsRight}
+            </ul>
+        </div>
+    )
+}
+
+function ShowMySeat() {
+    return (
+        <p className="show-my-seat">
+            <span id="jsSeatSide"></span>
+            <span id="jsSeatRow">0</span>열&nbsp;
+            <span id="jsSeatCol">0</span>번째
+        </p>
+    )
 }
 
 export default Seats;
